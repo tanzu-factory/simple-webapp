@@ -62,11 +62,9 @@ public class ServingWebContentApplicationTest {
 		assertTrue(this.restTemplate.getForObject("http://localhost:"+port+"/api/greeting", String.class).contains("greeting_text"), "response expected to contain 'greeting_text' received: "+this.restTemplate.getForObject("http://localhost:"+port+"/api/greeting", String.class));
 	}
 
-	// @Test
-	// public void greetingWithUser() throws Exception {
-	// 	// mockMvc.perform(get("/greeting").param("name", "Ali"))
-	// 	// 		.andExpect(content().string(containsString("Hello, Ali!")));
-	// 	assertTrue(this.restTemplate.getForObject("http://localhost:"+port+"/hello?name=Ali", String.class).contains("Hello, Ali!"), "response expected to contain 'Hello, Ali!' received: "+this.restTemplate.getForObject("http://localhost:"+port+"/hello?name=Tanzu", String.class));
-	// }
+	@Test
+	public void greetingWithUser() throws Exception {
+		assertTrue(this.restTemplate.getForObject("http://localhost:"+port+"/api/greeting/Ali", String.class).contains("Ali"), "response expected to contain 'Ali' received: "+this.restTemplate.getForObject("http://localhost:"+port+"/api/greeting/Ali", String.class));
+	}
 
 }

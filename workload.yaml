@@ -15,7 +15,7 @@ spec:
       ref:
         branch: main
       url: https://github.com/tanzu-factory/simple-webapp.git
-    subPath: complete
+    # subPath: complete
   env:
     - name: GREETING_TEXT
       value: welcome form tanzu factory

@@ -6,12 +6,12 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Complete/ServingWebContentApplication",
+            "name": "ServingWebContentApplication",
             "request": "launch",
             "mainClass": "com.example.servingwebcontent.ServingWebContentApplication",
-            "preLaunchTask": "java (build): Build Workspace",
-            "projectName": "serving-webapp-complete",
-            "cwd": "${workspaceFolder}/complete"
+            // "preLaunchTask": "java (build): Build Workspace",
+            "projectName": "serving-webapp",
+            "cwd": "${workspaceFolder}"
         }
     ]
 }
