@@ -1,5 +1,9 @@
 app:
     greeting-text: ${GREETING_TEXT}
+spring:
+    thymeleaf: 
+        prefix: classpath:/templates/
+        suffix: .html
 springdoc:
     api-docs:
         path: /v3/api-docs
