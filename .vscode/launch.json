@@ -6,15 +6,12 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Debug (Attach) - Remote",
+            "name": "Complete/ServingWebContentApplication",
             "request": "launch",
-            "preLaunchTask": "mvn compile -Ddebug=8080",
-            "projectName": "simplewebapp",
             "mainClass": "com.example.servingwebcontent.ServingWebContentApplication",
-            "sourcePaths": [
-                "${workspaceFolder}/complete/src/main/java",
-                "${workspaceFolder}/complete/.mvn/wrapper/maven-wrapper.jar"
-            ]
+            "preLaunchTask": "java (build): Build Workspace",
+            "projectName": "serving-webapp-complete",
+            "cwd": "${workspaceFolder}/complete"
         }
     ]
 }
