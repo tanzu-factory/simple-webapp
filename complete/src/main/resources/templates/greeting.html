@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:th="http://www.thymeleaf.org" 
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <title>Simple Webapp</title>
 <meta charset="UTF-8">
@@ -25,7 +28,7 @@ and is wrapped around the whole page content, except for the footer in this exam
     <img class="w3-image" src="/images/greeting.png" alt="greeting" width="1600" height="1060">
     <div class="w3-display-left w3-padding-large">
         <br/><br/><br/><br/><br/><br/>
-      <h1 class="w3-jumbo w3-text-black w3-hide-small" th:text="'Hello, ' + ${name} + '!'"/>
+      <h1 class="w3-jumbo w3-text-black w3-hide-small" th:text="'Hello, ' + ${name} + '!'">Hello</h1>
       <h6><a href="/" class="w3-bar-item w3-button">HOME</a></h6>
     </div>
   </header>
@@ -34,26 +37,8 @@ and is wrapped around the whole page content, except for the footer in this exam
 <!-- Footer -->
 <footer class="w3-container w3-dark-grey" style="padding:32px">
   <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
-  <!-- <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p> -->
 </footer>
 
-<script>
-// Toggle between hiding and showing blog replies/comments
-document.getElementById("myBtn").click();
-function myFunction(id) {
-  var x = document.getElementById(id);
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-
-function likeFunction(x) {
-  x.style.fontWeight = "bold";
-  x.innerHTML = "✓ Liked";
-}
-</script>
 
 </body>
 </html>
