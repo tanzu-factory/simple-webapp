@@ -28,7 +28,7 @@ and is wrapped around the whole page content, except for the footer in this exam
     <img class="w3-image" src="/images/greeting.png" alt="greeting" width="1600" height="1060">
     <div class="w3-display-left w3-padding-large">
         <br/><br/><br/><br/><br/><br/>
-      <h1 class="w3-jumbo w3-text-black w3-hide-small">Hello</h1>
+      <h1 class="w3-jumbo w3-text-black w3-hide-small" th:text="'Hello, ' + ${name} + '!'">Hello</h1>
       <h6><a href="/" class="w3-bar-item w3-button">HOME</a></h6>
     </div>
   </header>

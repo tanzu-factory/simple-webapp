@@ -52,21 +52,21 @@ public class ServingWebContentApplicationTest {
 		// N.B. jsoup can be useful for asserting HTML content
 		// mockMvc.perform(get("/index.html"))
 		// 		.andExpect(content().string(containsString("Simple contents")));
-		assertTrue(this.restTemplate.getForObject("http://localhost:"+port+"/", String.class).contains("Simple contents"), "response expected to contain 'Simple contents' received: "+this.restTemplate.getForObject("http://localhost:"+port+"/greeting?name=Tanzu", String.class));
+		assertTrue(this.restTemplate.getForObject("http://localhost:"+port+"/", String.class).contains("Simple contents"), "response expected to contain 'Simple contents' received: "+this.restTemplate.getForObject("http://localhost:"+port+"/hello?name=Tanzu", String.class));
 	}
 
 	@Test
 	public void greeting() throws Exception {
 		// mockMvc.perform(get("/greeting"))
 		// 		.andExpect(content().string(containsString("Hello, World!")));
-		assertTrue(this.restTemplate.getForObject("http://localhost:"+port+"/greeting", String.class).contains("Hello, World!"), "response expected to contain 'Hello, World!' received: "+this.restTemplate.getForObject("http://localhost:"+port+"/greeting?name=Tanzu", String.class));
+		assertTrue(this.restTemplate.getForObject("http://localhost:"+port+"/hello", String.class).contains("Hello, World!"), "response expected to contain 'Hello, World!' received: "+this.restTemplate.getForObject("http://localhost:"+port+"/hello?name=Tanzu", String.class));
 	}
 
 	@Test
 	public void greetingWithUser() throws Exception {
 		// mockMvc.perform(get("/greeting").param("name", "Ali"))
 		// 		.andExpect(content().string(containsString("Hello, Ali!")));
-		assertTrue(this.restTemplate.getForObject("http://localhost:"+port+"/greeting?name=Ali", String.class).contains("Hello, Ali!"), "response expected to contain 'Hello, Ali!' received: "+this.restTemplate.getForObject("http://localhost:"+port+"/greeting?name=Tanzu", String.class));
+		assertTrue(this.restTemplate.getForObject("http://localhost:"+port+"/hello?name=Ali", String.class).contains("Hello, Ali!"), "response expected to contain 'Hello, Ali!' received: "+this.restTemplate.getForObject("http://localhost:"+port+"/hello?name=Tanzu", String.class));
 	}
 
 }
