@@ -1,0 +1,4 @@
+.devcontainer/tilttunnel/*
+!.devcontainer/tilttunnel/.env.sample
+!.devcontainer/tilttunnel/init.sh
+!.devcontainer/tilttunnel/install-tanzu.sh

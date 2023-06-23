@@ -1,0 +1,7 @@
+FROM maven:3.8.5-openjdk-18-slim
+
+RUN java --version
+
+RUN apt-get update && apt-get install git -y
+
+# CMD [ "/bin/bash" ]

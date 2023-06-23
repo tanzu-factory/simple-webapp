@@ -1,0 +1,53 @@
+FROM maven:3.8.5-openjdk-18-slim
+
+RUN java --version
+
+RUN apt-get update && apt-get install -y \
+  vim \
+  git \
+  openssl \
+  unzip \
+	curl \
+  apt-transport-https \
+  less \
+  sudo \
+  docker.io
+
+
+
+RUN curl -L https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
+	&& chmod +x /usr/local/bin/kubectl
+
+COPY tilttunnel/tmc /usr/local/bin/
+
+RUN useradd -rm -d /home/javauser -s /bin/bash -g root -G sudo -u 1001 javauser -p "$(openssl passwd -1 1234)"
+USER javauser
+WORKDIR /home/javauser
+
+RUN mkdir -p $HOME/.ssh/
+RUN mkdir -p $HOME/.kube/
+RUN mkdir -p $HOME/binaries/
+ENV PATH="$PATH:/home/javauser/.local/bin"
+
+RUN mkdir -p $HOME/.local/bin/ && curl -fsSL https://raw.githubusercontent.com/tilt-dev/tilt/master/scripts/install.sh | bash
+
+# COPY tilttunnel/create-tunnel.sh /root/
+# RUN chmod +x /root/create-tunnel.sh
+
+# COPY tilttunnel/id_rsa /root/.ssh/
+# RUN chmod 600 /root/.ssh/id_rsa
+
+COPY tilttunnel/.env ./
+COPY --chown=1001 tilttunnel/init.sh ./
+RUN chmod +x init.sh
+
+COPY tilttunnel/kubeconfig ./.kube/config
+COPY tilttunnel/tanzu-framework-linux-amd64-v0.28.1.3.tar ./binaries/
+
+COPY --chown=1001 tilttunnel/install-tanzu.sh ./
+RUN chmod +x install-tanzu.sh
+
+RUN ./install-tanzu.sh
+
+
+# CMD [ "/bin/bash" ]

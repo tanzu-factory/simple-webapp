@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  
+  simplegreetingssc:
+    container_name: simple-greetings-sc
+    build:
+      context: .
+      dockerfile: ./Dockerfile.devcontainer
+    volumes:
+      - ../:/workspace:cached
+    environment:
+      GREETING_TEXT: Hello from anahid !!
+      spring_profiles_active: pgsqllocal
+    command: sleep infinity
+    networks: 
+      simplegreetingssc:
+        ipv4_address: 172.23.0.5
+    ports:
+      - 8080:8080
+    restart: unless-stopped
+    stdin_open: true
+    extra_hosts:
+      - "kubernetes:127.0.0.1"
+
+networks:
+  simplegreetingssc:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.23.0.0/16
+        

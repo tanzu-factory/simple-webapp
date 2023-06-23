@@ -1,0 +1,32 @@
+---
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: simplewebapp-dev
+  labels:
+    # apps.tanzu.vmware.com/is-dev: "true"
+    # apps.tanzu.vmware.com/is-custom: "true"
+    apps.tanzu.vmware.com/workload-type: web
+    apis.apps.tanzu.vmware.com/register-api: "true"
+    app.kubernetes.io/part-of: simple-webapp
+spec:
+  source:
+    git:
+      ref:
+        branch: main
+      url: https://github.com/tanzu-factory/simple-webapp.git
+    subPath: complete
+  env:
+    - name: GREETING_TEXT
+      value: welcome form tanzu factory
+  params:
+    - name: testing_pipeline_matching_labels # multi-pipeline functionality
+      value: {"apps.tanzu.vmware.com/pipeline":"test", "apps.tanzu.vmware.com/language":"java"} # multi-pipeline functionality
+    - name: api_descriptor
+      value:
+        type: openapi
+        location: 
+          path: "/v3/api-docs"
+        owner: default-team
+        system: demo
+        description: "Demo Api Auto Rego"

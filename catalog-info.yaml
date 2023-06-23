@@ -1,0 +1,20 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: simple-webapp
+  tags:
+    - app-accelerator
+    - java
+    - spring
+    - web
+    - tanzu
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=simple-webapp'
+spec:
+  type: service
+  lifecycle: experimental
+  owner: default-team
+  providesApis:
+    - greetings-from-environment
+    - greetings-from-db
+    - health-info
