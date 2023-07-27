@@ -37,3 +37,4 @@ build/
 !.devcontainer/tilttunnel/init.sh
 !.devcontainer/tilttunnel/install-tanzu.sh
 .DS_Store
+.vscode/settings.json
