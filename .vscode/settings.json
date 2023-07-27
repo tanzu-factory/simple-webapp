@@ -1,5 +1,6 @@
 {
     "java.server.launchMode":"Standard",
     "tanzu.sourceImage": "my.azurecr.io/tap-jumpstart/simplewebapp-dev-default",
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.compile.nullAnalysis.mode": "automatic"
 }
