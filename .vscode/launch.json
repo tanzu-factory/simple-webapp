@@ -1,0 +1,17 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "ServingWebContentApplication",
+            "request": "launch",
+            "mainClass": "com.example.servingwebcontent.ServingWebContentApplication",
+            // "preLaunchTask": "java (build): Build Workspace",
+            "projectName": "serving-webapp",
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
