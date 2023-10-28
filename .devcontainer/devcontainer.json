@@ -1,8 +1,8 @@
 {
-	"name": "simple-greetings-sc",
+	"name": "simple-webapp",
 	"dockerComposeFile": ["./docker-compose.yml"],
 	"shutdownAction": "stopCompose",
-	"service": "simplegreetingssc",
+	"service": "simplewebapp",
 	// "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
     "workspaceFolder": "/workspace",
 	
@@ -10,13 +10,18 @@
 	// 	"java.jdt.ls.java.home": "/usr/lib/jvm/java-11-openjdk-amd64",
 	// },
 	"forwardPorts": [8080],
-	"extensions": [
-		"Pivotal.vscode-boot-dev-pack",
-		"vscjava.vscode-java-pack",
-		"sohibe.java-generate-setters-getters",
-		"VMware.tanzu",
-		"GitHub.vscode-pull-request-github"
-	],
-	"postCreateCommand": "$HOME/init.sh && echo ok"
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"Pivotal.vscode-boot-dev-pack",
+				"vscjava.vscode-java-pack",
+				"sohibe.java-generate-setters-getters",
+				"VMware.tanzu",
+				"GitHub.vscode-pull-request-github"
+			],
+		}
+	},
+	
+	//"postCreateCommand": "$HOME/init.sh && echo ok"
 
 }

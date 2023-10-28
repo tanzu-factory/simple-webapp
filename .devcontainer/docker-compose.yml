@@ -2,8 +2,8 @@ version: "3"
 
 services:
   
-  simplegreetingssc:
-    container_name: simple-greetings-sc
+  simplewebapp:
+    container_name: simple-webapp
     build:
       context: .
       dockerfile: ./Dockerfile.devcontainer
@@ -11,11 +11,11 @@ services:
       - ../:/workspace:cached
     environment:
       GREETING_TEXT: Hello from anahid !!
-      spring_profiles_active: pgsqllocal
+      # spring_profiles_active: pgsqllocal
     command: sleep infinity
     networks: 
-      simplegreetingssc:
-        ipv4_address: 172.23.0.5
+      simplewebapp:
+        ipv4_address: 172.28.0.5
     ports:
       - 8080:8080
     restart: unless-stopped
@@ -24,9 +24,9 @@ services:
       - "kubernetes:127.0.0.1"
 
 networks:
-  simplegreetingssc:
+  simplewebapp:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.23.0.0/16
+        - subnet: 172.28.0.0/16
         

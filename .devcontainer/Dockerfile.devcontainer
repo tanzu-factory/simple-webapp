@@ -19,6 +19,14 @@ RUN curl -L https://storage.googleapis.com/kubernetes-release/release/$(curl -s 
 	&& chmod +x /usr/local/bin/kubectl
 
 COPY tilttunnel/tmc /usr/local/bin/
+RUN chmod +x /usr/local/bin/tmc
+
+COPY tilttunnel/kubeconfig ./.kube/config
+# COPY tilttunnel/tanzu-framework-linux-amd64-v0.28.1.3.tar ./binaries/
+
+COPY tilttunnel/tanzu-cli-linux-amd64.tar.gz /tmp/
+RUN curl -s https://raw.githubusercontent.com/alinahid477/common-merlin-scripts/main/scripts/install-tanzu-cli-standalone.sh | bash
+
 
 RUN useradd -rm -d /home/javauser -s /bin/bash -g root -G sudo -u 1001 javauser -p "$(openssl passwd -1 1234)"
 USER javauser
@@ -37,17 +45,15 @@ RUN mkdir -p $HOME/.local/bin/ && curl -fsSL https://raw.githubusercontent.com/t
 # COPY tilttunnel/id_rsa /root/.ssh/
 # RUN chmod 600 /root/.ssh/id_rsa
 
-COPY tilttunnel/.env ./
-COPY --chown=1001 tilttunnel/init.sh ./
-RUN chmod +x init.sh
+# COPY tilttunnel/.env ./
+# COPY --chown=1001 tilttunnel/init.sh ./
+# RUN chmod +x init.sh
 
-COPY tilttunnel/kubeconfig ./.kube/config
-COPY tilttunnel/tanzu-framework-linux-amd64-v0.28.1.3.tar ./binaries/
 
-COPY --chown=1001 tilttunnel/install-tanzu.sh ./
-RUN chmod +x install-tanzu.sh
+# COPY --chown=1001 tilttunnel/install-tanzu.sh ./
+# RUN chmod +x install-tanzu.sh
 
-RUN ./install-tanzu.sh
+# RUN ./install-tanzu.sh
 
 
 # CMD [ "/bin/bash" ]
